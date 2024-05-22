@@ -1,3 +1,5 @@
+[![Node CI](https://github.com/opifexM/Readme/actions/workflows/check.yml/badge.svg)](https://github.com/opifexM/Readme/actions/workflows/check.yml)
+
 # Readme
 
 Readme is a straightforward headless blog engine built using microservice architecture and the modern Nest.js framework. The project comprises multiple microservices, each addressing a specific task.
