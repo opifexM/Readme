@@ -13,11 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: List files in root directory
-        run: ls -la
-      - name: List files in project directory
-        run: ls -la project
-
       - name: Change directory to project
         run: cd project
 
