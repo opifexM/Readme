@@ -1,0 +1,45 @@
+@host = http://localhost:3010
+@userId = 661c2da73755ed24c779f041
+@postId = 51377bc9-afa8-4e05-ba48-9fa8dea9a122
+@repostId = post-uuid-L3
+
+# Create a new Quote-post
+POST {{host}}/api/post/quote?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "Text for Google article",
+  "author": "Author Keks",
+  "tags": [
+    "Google",
+    "Article",
+    "Quote"
+  ]
+}
+
+###
+
+# Get Quote-post by ID
+GET {{host}}/api/post/quote/{{postId}} HTTP/1.1
+
+###
+
+# Update Quote-post by ID
+PATCH {{host}}/api/post/quote/{{postId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "AAA AAAA AAA Text for Google article"
+}
+
+###
+
+# Repost Quote-post by ID
+POST {{host}}/api/post/quote/{{repostId}}/repost?userId={{userId}} HTTP/1.1
+
+###
+
+# Delete Quote-post by ID
+DELETE {{host}}/api/post/quote/{{postId}}?userId={{userId}} HTTP/1.1
+
+###

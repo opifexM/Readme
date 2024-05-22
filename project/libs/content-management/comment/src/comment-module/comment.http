@@ -1,0 +1,44 @@
+@host = http://localhost:3010
+@userId = author-uuid-002
+@postId = 2b83e65b-6f04-437b-9b9c-63a59e267546
+@commentId = 5b87c1bb-2eaf-45fb-919f-a7f4e35f06d6
+
+# Create a new Comment for Post
+POST {{host}}/api/comment/post/{{postId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "Google is good for search2."
+}
+
+###
+
+# Get Comment by ID
+GET {{host}}/api/comment/{{commentId}} HTTP/1.1
+
+###
+
+# Get Comments by Post ID
+GET {{host}}/api/comment/post/{{postId}} HTTP/1.1
+
+###
+
+# Get Comments by Post ID with Filter
+GET {{host}}/api/comment/post/{{postId}}?limit=2&sortDirection=asc&page=1 HTTP/1.1
+
+###
+
+# Update Comment by ID
+PATCH {{host}}/api/comment/{{commentId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "Google is good for search!!!"
+}
+
+###
+
+# Delete Comment by ID
+DELETE {{host}}/api/comment/{{commentId}}?userId={{userId}} HTTP/1.1
+
+###

@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Comment {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  text      String
+  postId    String   @map("post_id") @db.Uuid
+  authorId  String   @map("author_id")
+  createdAt DateTime @map("created_at")
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+enum DatabasePostStatus {
+  PUBLISHED
+  DRAFT
+}
+
+enum DatabasePostType {
+  VIDEO
+  TEXT
+  QUOTE
+  PHOTO
+  LINK
+}
+
+model Post {
+  id             String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tags           String[]
+  authorId       String             @map("author_id")
+  postedAt       DateTime           @map("posted_at")
+  createdAt      DateTime           @map("created_at")
+  postStatus     DatabasePostStatus @map("post_status")
+  originalPostId String?            @map("original_post_id")
+  postType       DatabasePostType   @map("post_type")
+  userLikeIds    String[]           @map("user_like_ids")
+  likeCount      Int                @map("like_count")
+  commentCount   Int                @map("comment_count")
+  repostCount    Int                @map("repost_count")
+
+  comments Comment[]
+
+  linkDetails  LinkPost?  @relation("LinkDetails")
+  photoDetails PhotoPost? @relation("PhotoDetails")
+  quoteDetails QuotePost? @relation("QuoteDetails")
+  textDetails  TextPost?  @relation("TextDetails")
+  videoDetails VideoPost? @relation("VideoDetails")
+
+  @@map("posts")
+}
+
+model LinkPost {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  url         String
+  description String?
+  postId      String  @unique @map("post_id") @db.Uuid
+  post        Post    @relation("LinkDetails", fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("link_posts")
+}
+
+model PhotoPost {
+  id     String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  url    String
+  postId String @unique @map("post_id") @db.Uuid
+  post   Post   @relation("PhotoDetails", fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("photo_posts")
+}
+
+model QuotePost {
+  id     String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  text   String
+  author String
+  postId String @unique @map("post_id") @db.Uuid
+  post   Post   @relation("QuoteDetails", fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("quote_posts")
+}
+
+model TextPost {
+  id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title        String
+  announcement String? @map("announcement")
+  text         String
+  postId       String  @unique @map("post_id") @db.Uuid
+  post         Post    @relation("TextDetails", fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("text_posts")
+}
+
+model VideoPost {
+  id     String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title  String
+  url    String
+  postId String @unique @map("post_id") @db.Uuid
+  post   Post   @relation("VideoDetails", fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("video_posts")
+}

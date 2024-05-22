@@ -1,0 +1,50 @@
+@host = http://localhost:3040
+@postId = 9721f2e7-162f-47d1-a423-7a0324e3ecc3
+@repostId = 623534f4-9d00-48df-a4aa-2d53a720db9d
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJBQUEyIiwiaWF0IjoxNzE1MzAzNjA0LCJleHAiOjE3MTc4OTU2MDR9.wt0Q-DxgBgOq9qLcZ1AAlxWRIsTdhTL8xn_ODROJb5FrMHqIimmav6mqC7vHZX3cmFhaAY29bO0klGFVqdXwLQ
+
+# Create a new Quote-post
+POST {{host}}/api/post/quote HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "Text for Google article",
+  "author": "Author Keks",
+  "tags": [
+    "Google",
+    "Article",
+    "Quote"
+  ]
+}
+
+###
+
+# Get Quote-post by ID
+GET {{host}}/api/post/quote/{{postId}} HTTP/1.1
+
+###
+
+# Update Quote-post by ID
+PATCH {{host}}/api/post/quote/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "AAA AAAA AAA Text for Google article"
+}
+
+###
+
+# Repost Quote-post by ID
+POST {{host}}/api/post/quote/{{repostId}}/repost HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Delete Quote-post by ID
+DELETE {{host}}/api/post/quote/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+

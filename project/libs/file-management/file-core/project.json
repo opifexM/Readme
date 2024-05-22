@@ -1,0 +1,9 @@
+{
+  "name": "file-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/file-management/file-core/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project file-core --web",
+  "targets": {}
+}

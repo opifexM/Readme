@@ -1,0 +1,44 @@
+@host = http://localhost:3010
+@userId = 661c2da73755ed24c779f041
+@postId = 37428e7e-55eb-48e1-aa23-c92bce8af6aa
+@repostId = post-uuid-L3
+
+# Create a new Photo-post
+POST {{host}}/api/post/photo?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "url": "https://google.com/article/1.html",
+  "tags": [
+    "Google",
+    "Article",
+    "Photo"
+  ]
+}
+
+###
+
+# Get Photo-post by ID
+GET {{host}}/api/post/photo/{{postId}} HTTP/1.1
+
+###
+
+# Update Photo-post by ID
+PATCH {{host}}/api/post/photo/{{postId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "url": "https://yahoo.com"
+}
+
+###
+
+# Repost Photo-post by ID
+POST {{host}}/api/post/photo/{{repostId}}/repost?userId={{userId}} HTTP/1.1
+
+###
+
+# Delete Photo-post by ID
+DELETE {{host}}/api/post/photo/{{postId}}?userId={{userId}} HTTP/1.1
+
+###

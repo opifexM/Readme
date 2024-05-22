@@ -1,0 +1,25 @@
+@host = http://localhost:3010
+@userId = 661c2da73755ed24c779f041
+@postId = c81b6b25-0e8b-4875-af1a-991e794c611e
+
+###
+
+# Get Link-post by ID
+GET {{host}}/api/post/general/{{postId}} HTTP/1.1
+
+###
+
+# Delete Post by ID
+DELETE {{host}}/api/post/general/{{postId}}?userId={{userId}} HTTP/1.1
+
+###
+
+# Like Post by ID
+POST {{host}}/api/post/general/{{postId}}/like?userId={{userId}} HTTP/1.1
+
+###
+
+# Unlike Post by ID
+DELETE {{host}}/api/post/general/{{postId}}/like?userId={{userId}} HTTP/1.1
+
+###

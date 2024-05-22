@@ -1,0 +1,50 @@
+@host = http://localhost:3040
+@postId = cc2ffb43-6476-484c-9d46-817b1e978907
+@repostId = cfa22808-79c1-45be-8589-723fe12c820f
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJBQUEyIiwiaWF0IjoxNzE1MzAzNjA0LCJleHAiOjE3MTc4OTU2MDR9.wt0Q-DxgBgOq9qLcZ1AAlxWRIsTdhTL8xn_ODROJb5FrMHqIimmav6mqC7vHZX3cmFhaAY29bO0klGFVqdXwLQ
+
+# Create a new Video-post
+POST {{host}}/api/post/video HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Title for Google article",
+  "url": "https://google.com/article/1.html",
+  "tags": [
+    "Google",
+    "Article",
+    "Video"
+  ]
+}
+
+###
+
+# Get Video-post by ID
+GET {{host}}/api/post/video/{{postId}} HTTP/1.1
+
+###
+
+# Update Video-post by ID
+PATCH {{host}}/api/post/video/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "AAA Title for Google article"
+}
+
+###
+
+# Repost Video-post by ID
+POST {{host}}/api/post/video/{{repostId}}/repost HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Delete Video-post by ID
+DELETE {{host}}/api/post/video/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+

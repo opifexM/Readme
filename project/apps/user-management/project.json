@@ -1,0 +1,24 @@
+{
+  "name": "user-management",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/user-management/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "user-management:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "user-management:build:development"
+        },
+        "production": {
+          "buildTarget": "user-management:build:production"
+        }
+      }
+    }
+  }
+}

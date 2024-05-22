@@ -1,0 +1,39 @@
+services:
+  readme.content-management.postgres:
+    image: postgres:16.2
+    restart: always
+    container_name: readme-content-management_postgresDb
+
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - readme-content-management_data:/data/db
+      - ./initdb:/docker-entrypoint-initdb.d
+    networks:
+      - readme-content-management.network
+
+  readme.content-management.app:
+    image: ghcr.io/opifexm/readme/content-management-app:latest
+    container_name: readme-content-management_app
+    depends_on:
+      - readme.content-management.postgres
+    restart: always
+
+    env_file:
+      - content-app.env
+    ports:
+      - ${APP_PORT}:3000
+    networks:
+      - readme-content-management.network
+
+networks:
+  readme-content-management.network:
+    driver: bridge
+
+volumes:
+  readme-content-management_data:

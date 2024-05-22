@@ -1,0 +1,46 @@
+@host = http://localhost:3010
+@userId = 661c2da73755ed24c779f041
+@postId = 6dde2ebd-f138-4f26-842a-797143f7b7bc
+@repostId = post-uuid-L3
+
+# Create a new Text-post
+POST {{host}}/api/post/text?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Title Google article",
+  "announcement": "Announcement for Google article Announcement for Google article Announcement for Google article Announcement for Google article",
+  "text": "Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article",
+  "tags": [
+    "Google",
+    "Article",
+    "Text"
+  ]
+}
+
+###
+
+# Get Text-post by ID
+GET {{host}}/api/post/text/{{postId}} HTTP/1.1
+
+###
+
+# Update Text-post by ID
+PATCH {{host}}/api/post/text/{{postId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "announcement": "AAA Announcement for Google article Announcement for Google article Announcement for Google article Announcement for Google article"
+}
+
+###
+
+# Repost Text-post by ID
+POST {{host}}/api/post/text/{{repostId}}/repost?userId={{userId}} HTTP/1.1
+
+###
+
+# Delete Text-post by ID
+DELETE {{host}}/api/post/text/{{postId}}?userId={{userId}} HTTP/1.1
+
+###

@@ -1,0 +1,10 @@
+{
+  "name": "content-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/content-management/content-core/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project content-core --web",
+  "targets": {
+  }
+}

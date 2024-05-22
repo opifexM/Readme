@@ -1,0 +1,50 @@
+@host = http://localhost:3040
+@postId = eaf745a0-67cb-41f1-93de-90fd12b1344e
+@repostId = d0320d6f-0515-46d3-9fa6-0ef9b7212c5e
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJBQUEyIiwiaWF0IjoxNzE1MzAzNjA0LCJleHAiOjE3MTc4OTU2MDR9.wt0Q-DxgBgOq9qLcZ1AAlxWRIsTdhTL8xn_ODROJb5FrMHqIimmav6mqC7vHZX3cmFhaAY29bO0klGFVqdXwLQ
+
+# Create a new Link-post
+POST {{host}}/api/post/link HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "url": "https://google.com/article/1.html",
+  "description": "Google article 5",
+  "tags": [
+    "Google",
+    "Article",
+    "Link"
+  ]
+}
+
+###
+
+# Get Link-post by ID
+GET {{host}}/api/post/link/{{postId}} HTTP/1.1
+
+###
+
+# Update Link-post by ID
+PATCH {{host}}/api/post/link/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "description": "AAA2"
+}
+
+###
+
+# Repost Link-post by ID
+POST {{host}}/api/post/link/{{repostId}}/repost HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Delete Link-post by ID
+DELETE {{host}}/api/post/link/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+

@@ -1,0 +1,46 @@
+@host = http://localhost:3000
+@userId = 663141cde9fb0b0f802c9e48
+@subscribeUserId = 6629512cf7987067e6076a85
+
+# Create a new user
+POST {{host}}/api/user HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "user112@notfound.local",
+  "firstName": "Keks",
+  "lastName": "Smith",
+  "password": "123456"
+}
+
+###
+
+# Get user by ID
+GET {{host}}/api/user/{{userId}} HTTP/1.1
+
+###
+
+# Update user
+PATCH {{host}}/api/user?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "lastName": "AAA2"
+}
+
+###
+
+# Subscribe User
+POST {{host}}/api/user/subscription/{{subscribeUserId}}?userId={{userId}} HTTP/1.1
+
+###
+
+# Unsubscribe User
+DELETE {{host}}/api/user/subscription/{{subscribeUserId}}?userId={{userId}} HTTP/1.1
+
+###
+
+# Get User SubscriptionIds
+GET {{host}}/api/user/subscription?userId={{userId}} HTTP/1.1
+
+###

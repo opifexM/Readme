@@ -1,0 +1,51 @@
+@host = http://localhost:3040
+@postId = bf00d943-7c0d-455f-b552-f3313806cdac
+@repostId = 59861e38-51c3-4c3a-8fb6-a6c2d2ff6955
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJBQUEyIiwiaWF0IjoxNzE1MzAzNjA0LCJleHAiOjE3MTc4OTU2MDR9.wt0Q-DxgBgOq9qLcZ1AAlxWRIsTdhTL8xn_ODROJb5FrMHqIimmav6mqC7vHZX3cmFhaAY29bO0klGFVqdXwLQ
+
+# Create a new Text-post
+POST {{host}}/api/post/text HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Title Google article",
+  "announcement": "Announcement for Google article Announcement for Google article Announcement for Google article Announcement for Google article",
+  "text": "Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article Text for Google article",
+  "tags": [
+    "Google",
+    "Article",
+    "Text"
+  ]
+}
+
+###
+
+# Get Text-post by ID
+GET {{host}}/api/post/text/{{postId}} HTTP/1.1
+
+###
+
+# Update Text-post by ID
+PATCH {{host}}/api/post/text/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "announcement": "AAA Announcement for Google article Announcement for Google article Announcement for Google article Announcement for Google article"
+}
+
+###
+
+# Repost Text-post by ID
+POST {{host}}/api/post/text/{{repostId}}/repost HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Delete Text-post by ID
+DELETE {{host}}/api/post/text/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+

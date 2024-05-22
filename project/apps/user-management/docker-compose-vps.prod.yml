@@ -1,0 +1,37 @@
+services:
+  readme.user-management.mongo:
+    image: mongo:7.0.8
+    container_name: readme-user-management_mongoDb
+    restart: always
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DB}
+    ports:
+      - ${MONGO_PORT}:27017
+    volumes:
+      - readme-user-management_data:/data/db
+    networks:
+      - readme-user-management.network
+
+  readme.user-management.app:
+    image: ghcr.io/opifexm/readme/user-management-app:latest
+    container_name: readme-user-management_app
+    depends_on:
+      - readme.user-management.mongo
+    restart: always
+
+    env_file:
+      - user-app.env
+    ports:
+      - ${APP_PORT}:3000
+    networks:
+      - readme-user-management.network
+
+networks:
+  readme-user-management.network:
+    driver: bridge
+
+volumes:
+  readme-user-management_data:

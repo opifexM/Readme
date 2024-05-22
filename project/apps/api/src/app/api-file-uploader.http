@@ -1,0 +1,21 @@
+@host = http://localhost:3040
+@fileId = 663ffdedf2de920314d06ad7
+
+# Upload  file
+POST {{host}}/api/files/upload HTTP/1.1
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="file.png"
+
+< ./file.png
+
+--boundary--
+
+###
+
+# Get file by ID
+GET {{host}}/api/files/{{fileId}} HTTP/1.1
+
+###
+

@@ -1,0 +1,9 @@
+{
+  "name": "notification-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/notification-management/notification-core/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project notification-core --web",
+  "targets": {}
+}

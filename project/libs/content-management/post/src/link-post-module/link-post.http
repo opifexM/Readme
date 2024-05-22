@@ -1,0 +1,45 @@
+@host = http://localhost:3010
+@userId = 661c2da73755ed24c779f041
+@postId = 28ba36e8-7a69-402a-9ecc-516dc963887e
+@repostId = 6b0e0ca6-cd60-405d-b935-edd179ca4767
+
+# Create a new Link-post
+POST {{host}}/api/post/link?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "url": "https://google.com/article/1.html",
+  "description": "Google article 5",
+  "tags": [
+    "Google",
+    "Article",
+    "Link"
+  ]
+}
+
+###
+
+# Get Link-post by ID
+GET {{host}}/api/post/link/{{postId}} HTTP/1.1
+
+###
+
+# Update Link-post by ID
+PATCH {{host}}/api/post/link/{{postId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "description": "AAA2"
+}
+
+###
+
+# Repost Link-post by ID
+POST {{host}}/api/post/link/{{repostId}}/repost?userId={{userId}} HTTP/1.1
+
+###
+
+# Delete Link-post by ID
+DELETE {{host}}/api/post/link/{{postId}}?userId={{userId}} HTTP/1.1
+
+###

@@ -1,0 +1,27 @@
+@host = http://localhost:3040
+@userId = 66451a2925796804ba012a62
+@postId = 01ce656a-f640-4247-a14f-69dab40c070d
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjQ1MWEyOTI1Nzk2ODA0YmEwMTJhNjIiLCJlbWFpbCI6InVzZXIxMTIzQG5vdGZvdW5kLmxvY2FsIiwidXNlclR5cGUiOiJ1c2VyIiwiZmlyc3ROYW1lIjoiS2VrcyIsImxhc3ROYW1lIjoiU21pdGgiLCJpYXQiOjE3MTU4MDQ3MzEsImV4cCI6MTcxODM5NjczMX0.UoGfL23X7BEyw4fo6rYsPBczcYnhCkzP4fwVIcfLrxn5VJB4bmpCOqaX9hsYALvYBXj0dmWBdttJzeCx-DtPPA
+
+# Get Link-post by ID
+GET {{host}}/api/post/general/{{postId}} HTTP/1.1
+
+###
+
+# Delete Post by ID
+DELETE {{host}}/api/post/general/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Like Post by ID
+POST {{host}}/api/post/general/{{postId}}/like HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Unlike Post by ID
+DELETE {{host}}/api/post/general/{{postId}}/like HTTP/1.1
+Authorization: Bearer {{token}}
+
+###

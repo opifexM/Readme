@@ -1,0 +1,49 @@
+@host = http://localhost:3040
+@postId = 95986f6c-3ad3-4b55-a5fc-4bbbfafec275
+@repostId = 45c2e271-74a5-4268-b46f-e4342be5e799
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjQ1MWEyOTI1Nzk2ODA0YmEwMTJhNjIiLCJlbWFpbCI6InVzZXIxMTIzQG5vdGZvdW5kLmxvY2FsIiwidXNlclR5cGUiOiJ1c2VyIiwiZmlyc3ROYW1lIjoiS2VrcyIsImxhc3ROYW1lIjoiU21pdGgiLCJpYXQiOjE3MTU4MDQ3MzEsImV4cCI6MTcxODM5NjczMX0.UoGfL23X7BEyw4fo6rYsPBczcYnhCkzP4fwVIcfLrxn5VJB4bmpCOqaX9hsYALvYBXj0dmWBdttJzeCx-DtPPA
+
+# Create a new Photo-post
+POST {{host}}/api/post/photo HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "url": "https://google.com/article/1.html",
+  "tags": [
+    "Google",
+    "Article",
+    "Photo"
+  ]
+}
+
+###
+
+# Get Photo-post by ID
+GET {{host}}/api/post/photo/{{postId}} HTTP/1.1
+
+###
+
+# Update Photo-post by ID
+PATCH {{host}}/api/post/photo/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "url": "https://yahoo.com"
+}
+
+###
+
+# Repost Photo-post by ID
+POST {{host}}/api/post/photo/{{repostId}}/repost HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Delete Photo-post by ID
+DELETE {{host}}/api/post/photo/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+

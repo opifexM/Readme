@@ -1,0 +1,60 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "noEmitOnError": false,
+    "paths": {
+      "@project/api-config": ["libs/api/api-config/src/index.ts"],
+      "@project/authentication": [
+        "libs/user-management/authentication/src/index.ts"
+      ],
+      "@project/comment": ["libs/content-management/comment/src/index.ts"],
+      "@project/content-config": [
+        "libs/content-management/content-config/src/index.ts"
+      ],
+      "@project/content-core": [
+        "libs/content-management/content-core/src/index.ts"
+      ],
+      "@project/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@project/email-subscriber": [
+        "libs/notification-management/email-subscriber/src/index.ts"
+      ],
+      "@project/file-config": ["libs/file-management/file-config/src/index.ts"],
+      "@project/file-core": ["libs/file-management/file-core/src/index.ts"],
+      "@project/file-uploader": [
+        "libs/file-management/file-uploader/src/index.ts"
+      ],
+      "@project/interceptors": ["libs/shared/interceptors/src/index.ts"],
+      "@project/notification-config": [
+        "libs/notification-management/notification-config/src/index.ts"
+      ],
+      "@project/notification-core": [
+        "libs/notification-management/notification-core/src/index.ts"
+      ],
+      "@project/pipes": ["libs/shared/pipes/src/index.ts"],
+      "@project/post": ["libs/content-management/post/src/index.ts"],
+      "@project/prisma-client": ["libs/shared/prisma-client/src/index.ts"],
+      "@project/search": ["libs/content-management/search/src/index.ts"],
+      "@project/shared-core": ["libs/shared/core/src/index.ts"],
+      "@project/shared-helpers": ["libs/shared/helpers/src/index.ts"],
+      "@project/user": ["libs/user-management/user/src/index.ts"],
+      "@project/user-config": ["libs/user-management/user-config/src/index.ts"],
+      "@project/user-core": ["libs/user-management/user-core/src/index.ts"],
+      "@project/user-notify": ["libs/user-management/user-notify/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

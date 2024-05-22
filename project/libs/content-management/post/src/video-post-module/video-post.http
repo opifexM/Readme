@@ -1,0 +1,45 @@
+@host = http://localhost:3010
+@userId = 661c2da73755ed24c779f041
+@postId = 38828759-4be4-44fd-9ff5-71a2eee4c812
+@repostId = post-uuid-L3
+
+# Create a new Video-post
+POST {{host}}/api/post/video?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Title for Google article",
+  "url": "https://google.com/article/1.html",
+  "tags": [
+    "Google",
+    "Article",
+    "Video"
+  ]
+}
+
+###
+
+# Get Video-post by ID
+GET {{host}}/api/post/video/{{postId}} HTTP/1.1
+
+###
+
+# Update Video-post by ID
+PATCH {{host}}/api/post/video/{{postId}}?userId={{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "AAA Title for Google article"
+}
+
+###
+
+# Repost Video-post by ID
+POST {{host}}/api/post/video/{{repostId}}/repost?userId={{userId}} HTTP/1.1
+
+###
+
+# Delete Video-post by ID
+DELETE {{host}}/api/post/video/{{postId}}?userId={{userId}} HTTP/1.1
+
+###

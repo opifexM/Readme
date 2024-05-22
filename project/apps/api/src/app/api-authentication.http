@@ -1,0 +1,32 @@
+@host = http://localhost:3040
+@accessToken = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjQ1MWEyOTI1Nzk2ODA0YmEwMTJhNjIiLCJlbWFpbCI6InVzZXIxMTIzQG5vdGZvdW5kLmxvY2FsIiwidXNlclR5cGUiOiJ1c2VyIiwiZmlyc3ROYW1lIjoiS2VrcyIsImxhc3ROYW1lIjoiU21pdGgiLCJpYXQiOjE3MTU4MDQ3MzEsImV4cCI6MTcxODM5NjczMX0.UoGfL23X7BEyw4fo6rYsPBczcYnhCkzP4fwVIcfLrxn5VJB4bmpCOqaX9hsYALvYBXj0dmWBdttJzeCx-DtPPA
+@refreshToken = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJTbWl0aCIsInRva2VuSWQiOiIzNGNiOGUzMC1iMjIyLTQ4OGUtOGYzYy00OTc4Y2FhMmM5MmIiLCJpYXQiOjE3MTUwODkzNTAsImV4cCI6MTcxNzY4MTM1MH0.uWRrBq8fFOKA5xCM6mJzeEsmiEYhbYYNgnF-n3plSTDcX4kk7iyrFhs3olBJymR3vCk6FaNoFjlNDSxSgbAgrw
+
+# Login user by email and password
+POST {{host}}/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "user1123@notfound.local",
+  "password": "123456"
+}
+
+###
+
+# Change user password
+PATCH {{host}}/api/auth/change-password HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "oldPassword": "123456",
+  "newPassword": "1234567"
+}
+
+###
+
+# Get new JWT pair from refreshToken
+POST {{host}}/api/auth/refresh HTTP/1.1
+Authorization: Bearer {{refreshToken}}
+
+###

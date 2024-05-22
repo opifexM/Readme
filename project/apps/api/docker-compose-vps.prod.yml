@@ -1,0 +1,16 @@
+services:
+  readme.api-app.app:
+    image: ghcr.io/opifexm/readme/api-app:latest
+    container_name: readme-api_app
+    restart: always
+
+    env_file:
+      - api.env
+    ports:
+      - ${APP_PORT}:3000
+    networks:
+      - readme-general.network
+
+networks:
+  readme-general.network:
+    driver: bridge

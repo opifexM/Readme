@@ -1,0 +1,47 @@
+@host = http://localhost:3040
+@postId = 59861e38-51c3-4c3a-8fb6-a6c2d2ff6955
+@commentId = f354b651-9b23-4a53-8d47-ebac8f353981
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJBQUEyIiwiaWF0IjoxNzE1Mjg1NzUwLCJleHAiOjE3MTUyODg3NTB9.QpUXGhl9kgLhTJWPGy5_AriwbymnqEyWiSHH7hXTkyBrwqc2MBZNiLzNCpbfI--QcE9fWvMvHvoKOG-qxZzLfw
+
+# Create a new Comment for Post
+POST {{host}}/api/comment/post/{{postId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "Google is good for search2."
+}
+
+###
+
+# Get Comment by ID
+GET {{host}}/api/comment/{{commentId}} HTTP/1.1
+
+###
+
+# Get Comments by Post ID
+GET {{host}}/api/comment/post/{{postId}} HTTP/1.1
+
+###
+
+# Get Comments by Post ID with Filter
+GET {{host}}/api/comment/post/{{postId}}?limit=2&sortDirection=asc&page=1 HTTP/1.1
+
+###
+
+# Update Comment by ID
+PATCH {{host}}/api/comment/{{commentId}} HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "Google is good for search!!!"
+}
+
+###
+
+# Delete Comment by ID
+DELETE {{host}}/api/comment/{{commentId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###

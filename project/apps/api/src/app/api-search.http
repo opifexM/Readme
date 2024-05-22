@@ -1,0 +1,65 @@
+@host = http://localhost:3040
+@token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjMxNDFjZGU5ZmIwYjBmODAyYzllNDgiLCJlbWFpbCI6InVzZXIxMTJAbm90Zm91bmQubG9jYWwiLCJ1c2VyVHlwZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJBQUEyIiwiaWF0IjoxNzE1MzAzNjA0LCJleHAiOjE3MTc4OTU2MDR9.wt0Q-DxgBgOq9qLcZ1AAlxWRIsTdhTL8xn_ODROJb5FrMHqIimmav6mqC7vHZX3cmFhaAY29bO0klGFVqdXwLQ
+
+###
+
+# Get public Post
+GET {{host}}/api/search/public HTTP/1.1
+
+###
+
+# Search User Post
+GET {{host}}/api/search HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Search Post without User
+GET {{host}}/api/search HTTP/1.1
+
+###
+
+# Search Post with postType
+@postType = QUOTE
+GET {{host}}/api/search?postType={{postType}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Search Post with postType + tags
+@tags1 = Google
+@tags2 = Article
+GET {{host}}/api/search?postType={{postType}}&tags={{tags1}}&tags={{tags2}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Search Post with sortType + sortDirection
+@sortType = BY_DATE
+@sortDirection = asc
+GET {{host}}/api/search?sortType={{sortType}}&sortDirection={{sortDirection}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Search Post with title
+@title = Google
+GET {{host}}/api/search?title={{title}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Search Post with authorIds
+@authorIds1 = author-uuid-003
+@authorIds2 = author-uuid-004
+GET {{host}}/api/search?authorIds={{authorIds1}}&authorIds={{authorIds2}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+# Personal-Feed
+GET {{host}}/api/search/personal-feed HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+

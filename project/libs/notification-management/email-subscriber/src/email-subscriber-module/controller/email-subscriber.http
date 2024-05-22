@@ -1,0 +1,7 @@
+@host = http://localhost:3030
+@userId = 661c2da73755ed24c779f041
+
+# Start Email Servise for new posts
+POST {{host}}/api/notifications/new-posts-emails?userId={{userId}} HTTP/1.1
+
+###
